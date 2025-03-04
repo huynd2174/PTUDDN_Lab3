@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserApiController {
 
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+    // Cho phép cả ROLE_USER và ROLE_ADMIN truy cập
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/profile")
     public String getUserProfile() {
         return "User profile information.";

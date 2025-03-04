@@ -7,6 +7,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/admin")
 public class AdminController {
 
+    // Admin actions, only accessible by 'ADMIN'
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/profile")
+    public String adminProfile() {
+        return "Admin profile information.";
+    }
+
+    // Admin actions, only accessible by 'ADMIN'
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping("/create")
     public String create() {
