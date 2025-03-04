@@ -43,12 +43,15 @@ This project is a demo application showcasing the integration of Spring Boot 3 w
 ![get_user_profilse.png](src/main/resources/IMG/get_admin_profile.png)
 ### GET api
 ![admin_GET](src/main/resources/IMG/admin_GET.png)
+![GET_admin](src/main/resources/IMG/GET_admin.png)
 ### POST api
 ![admin_POST](src/main/resources/IMG/admin_POST.png)
 ### PUT api
 ![admin_PUT](src/main/resources/IMG/admin_PUT.png)
+![PUT_admin](src/main/resources/IMG/PUT_admin.png)
 ### DEL api
 ![admin_DEL](src/main/resources/IMG/admin_DEL.png)
+![DEL_admin](src/main/resources/IMG/DEL_admin.png)
 ## Database
 ![db.png](src/main/resources/IMG/db.png)
 
