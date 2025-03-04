@@ -10,15 +10,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 @Configuration
 @EnableWebSecurity
@@ -44,6 +44,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/welcome", "/auth/addNewUser", "/auth/generateToken").permitAll() // Public endpoints
                         .requestMatchers("/api/admin/**").hasRole("ADMIN") // Only ADMIN can access /api/admin/**
                         .requestMatchers("/api/user/**").hasRole("USER") // Only USER can access /api/user/**
+                        .requestMatchers("/api/accounts/**").hasAuthority("ROLE_ADMIN") // Only ADMIN and USER can access /api/accounts/**
                         .requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("USER", "ADMIN") // Only USER and ADMIN can perform GET requests on /api/**
                         .anyRequest().hasRole("ADMIN") // Only ADMIN can access other endpoints
                 )
@@ -58,7 +59,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); // Password encoding
     }
 
     @Bean
