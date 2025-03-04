@@ -1,0 +1,13 @@
+package com.example.ptuddn_3;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Ptuddn3Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Ptuddn3Application.class, args);
+    }
+
+}
